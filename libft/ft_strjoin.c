@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_p.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:17:57 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/23 14:04:08 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 11:03:42 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 15:57:42 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_p(va_list params)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned long	adress;
-	void			*ptr;
-	int				size;
+	char			*dest;
+	unsigned int	i;
+	unsigned int	j;
+	size_t			size;
 
-	size = 0;
-	ptr = (void *) va_arg(params, void *);
-	adress = (unsigned long) ptr;
-	if (adress == 0)
+	j = 0;
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	dest = malloc(sizeof(char) * (size + 1));
+	if (!dest)
+		return (NULL);
+	while (s1[i])
 	{
-		ft_putstr_fd("(nil)", 1);
-		return (5);
+		dest[i] = s1[i];
+		i++;
 	}
-	ft_putstr_fd("0x", 1);
-	ft_putunbr_base_fd(adress, "0123456789abcdef", 1);
-	while (adress != 0)
+	while (s2[j])
 	{
-		adress /= 16;
-		size++;
+		dest[i + j] = s2[j];
+		j++;
 	}
-	return (size + 2);
+	dest[i + j] = '\0';
+	return (dest);
 }

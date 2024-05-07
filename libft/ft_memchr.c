@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 10:33:11 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 10:33:26 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	size;
-	int		i;
+	unsigned char	*s1;
+	unsigned int	i;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	s1 = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		i /= 10;
-		size++;
+		if (s1[i] == (unsigned char)c)
+		{
+			return ((void *)s1 + i);
+		}
+		i++;
 	}
-	return (size);
+	return (NULL);
 }

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 12:53:37 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 12:56:40 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	size;
-	int		i;
+	t_list	*d;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	if (*lst)
 	{
-		i /= 10;
-		size++;
+		d = ft_lstlast(*lst);
+		d->next = &*new;
 	}
-	return (size);
+	else
+		*lst = new;
 }

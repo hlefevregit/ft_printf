@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 11:26:39 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 11:27:45 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	size;
-	int		i;
+	unsigned int	i;
+	char			*g;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	i = 0;
+	g = ft_strdup(s);
+	if (!g || !f || !s)
 	{
-		i /= 10;
-		size++;
+		return (NULL);
 	}
-	return (size);
+	while (g[i])
+	{
+		g[i] = f(i, g[i]);
+		i++;
+	}
+	return (g);
 }

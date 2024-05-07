@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 09:48:01 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 09:58:18 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	size;
-	int		i;
+	size_t			i;
+	unsigned char	*dest;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	i = 0;
+	dest = (unsigned char *)b;
+	while (i < len)
 	{
-		i /= 10;
-		size++;
+		dest[i] = c;
+		i++;
 	}
-	return (size);
+	return (b);
 }

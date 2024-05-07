@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 11:41:11 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 11:41:28 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	size_t	size;
-	int		i;
-
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	if (nb == -2147483648)
 	{
-		i /= 10;
-		size++;
+		write(fd, "-2147483648", 11);
 	}
-	return (size);
+	else
+	{
+		if (nb < 0)
+		{
+			ft_putchar_fd('-', fd);
+			nb = -nb;
+		}
+		if (nb >= 10)
+		{
+			ft_putnbr_fd(nb / 10, fd);
+			ft_putnbr_fd(nb % 10, fd);
+		}
+		else
+		{
+			ft_putchar_fd(nb + '0', fd);
+		}
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlefevre <hlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 11:12:45 by hlefevre          #+#    #+#             */
-/*   Updated: 2021/11/09 15:00:38 by hlefevre         ###   ########.fr       */
+/*   Created: 2024/04/22 16:18:57 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 16:19:00 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

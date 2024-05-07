@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlefevre <hlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 09:13:00 by hlefevre          #+#    #+#             */
-/*   Updated: 2021/11/13 13:32:56 by hlefevre         ###   ########.fr       */
+/*   Created: 2024/04/22 16:07:52 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/24 13:41:30 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*static int	ft_checkprint(const char patoche)
-{
-	if (ft_strchr("cspdiuxX%", patoche) != 0)
-		return (1);
-} */
 
 static int	ft_treatflag(char patoche, va_list arg)
 {

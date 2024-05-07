@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 11:44:12 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 11:44:35 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+char	*ft_strdup(const char *src)
 {
-	size_t	size;
-	int		i;
+	char			*str;
+	unsigned int	i;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	str = malloc(sizeof(char) * ft_strlen((char *)src) + 1);
+	i = 0;
+	if (str == 0)
+		return (0);
+	while (src[i])
 	{
-		i /= 10;
-		size++;
+		str[i] = src[i];
+		i++;
 	}
-	return (size);
+	str[i] = '\0';
+	return (str);
 }

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 09:39:09 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 09:41:33 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+int	ft_isalnum(int c)
 {
-	size_t	size;
-	int		i;
-
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
+	if (('0' <= c && c <= '9') || ('A' <= c && c <= 'Z')
+		|| ('a' <= c && c <= 'z'))
 		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
-	{
-		i /= 10;
-		size++;
-	}
-	return (size);
+	return (0);
 }

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 13:02:36 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 13:02:39 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	size;
-	int		i;
+	t_list	*t;
+	t_list	*new;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	if (!lst || !del)
+		return (0);
+	t = NULL;
+	while (lst)
 	{
-		i /= 10;
-		size++;
+		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			while (t)
+			{
+				new = t->next;
+				(*del)(t->content);
+				free(t);
+				t = new;
+			}
+		}
+		lst = lst->next;
+		ft_lstadd_back(&t, new);
 	}
-	return (size);
+	return (t);
 }

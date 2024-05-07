@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 10:11:51 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 11:51:59 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	size;
-	int		i;
+	size_t	j;
+	size_t	len;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	j = 0;
+	len = ft_strlen(dst);
+	if (len >= dstsize)
+		return (dstsize + ft_strlen(src));
+	while (src[j] && dstsize > len + 1)
 	{
-		i /= 10;
-		size++;
+		dst[len] = src[j];
+		j++;
+		len++;
 	}
-	return (size);
+	dst[len] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[j]));
 }

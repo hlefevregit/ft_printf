@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 10:34:32 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 11:32:25 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+char	*ft_strnstr(char const *big, char const *little, size_t len)
 {
-	size_t	size;
-	int		i;
+	size_t	i;
+	size_t	j;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	i = 0;
+	if (big == little || ft_strlen(little) == 0)
+		return ((char *)big);
+	while (big[i] && len > i)
 	{
-		i /= 10;
-		size++;
+		j = 0;
+		while (big[i + j] && little[j]
+			&& big[i + j] == little[j] && i + j < len)
+		{
+			j++;
+		}
+		if (j == ft_strlen(little))
+		{
+			return ((char *)big + i);
+		}
+		i++;
 	}
-	return (size);
+	return (NULL);
 }

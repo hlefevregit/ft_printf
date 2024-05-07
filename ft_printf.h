@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlefevre <hlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 09:57:27 by hlefevre          #+#    #+#             */
-/*   Updated: 2021/11/13 14:31:38 by hlefevre         ###   ########.fr       */
+/*   Created: 2024/04/22 16:06:35 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/24 16:17:44 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
 # include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include "./libft/libft.h"
 
 int		ft_printf(const char *patoche, ...);
 int		ft_treat_c(va_list params);

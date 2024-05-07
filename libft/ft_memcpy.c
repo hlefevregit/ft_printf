@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_i.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:15:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:49 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/04/22 09:52:13 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/22 09:54:42 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_treat_i(va_list params)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	size;
 	int		i;
+	char	*s1;
+	char	*s2;
 
-	size = 0;
-	i = (int) va_arg(params, int);
-	ft_putnbr_fd(i, 1);
-	if (i == 0)
-		return (1);
-	if (i < 0)
-		size++;
-	while (i != 0)
+	s1 = (char *)dest;
+	s2 = (char *)src;
+	i = 0;
+	if (!s1 && !s2)
+		return (NULL);
+	while (n > 0)
 	{
-		i /= 10;
-		size++;
+		s1[i] = s2[i];
+		i++;
+		n--;
 	}
-	return (size);
+	return (dest);
 }

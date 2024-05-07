@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlefevre <hlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 09:48:51 by hlefevre          #+#    #+#             */
-/*   Updated: 2021/11/13 14:36:56 by hlefevre         ###   ########.fr       */
+/*   Created: 2024/04/22 16:22:59 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/04/23 14:01:22 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_treat_x(va_list params)
 
 	size = 0;
 	d = (unsigned int) va_arg(params, unsigned int);
-	ft_putunbr_base_fd(d, "01234565789abcdef", 1);
+	ft_putunbr_base_fd(d, "0123456789abcdef", 1);
 	if (d == 0)
 		return (1);
 	while (d != 0)
